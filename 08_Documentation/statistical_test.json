@@ -1,0 +1,9 @@
+{
+  "test": "Mann-Whitney U, descriptive association, exploratory",
+  "n_a": 89936,
+  "n_b": 6534,
+  "mean_a": 4.2794876356520195,
+  "mean_b": 2.2552800734618916,
+  "p_value": 0.0,
+  "caution": "Unadjusted for confounding and multiple comparisons. No causal interpretation."
+}

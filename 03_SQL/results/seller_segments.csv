@@ -1,0 +1,4 @@
+segment,sellers,order_seller_pairs,unweighted_seller_late_rate
+High Volume / Problematic,318,37034,0.11437701864598736
+High Volume / Reliable,486,50417,0.032233471162415005
+Insufficient eligible orders,2291,12559,0.07069523856784905

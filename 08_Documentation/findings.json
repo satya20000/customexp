@@ -1,0 +1,16 @@
+{
+  "findings": [
+    "99,441 orders; 96,478 delivered; 625 cancelled (0.63%).",
+    "96,470 orders had valid delivery and estimated dates; 6.77% were late by calendar date.",
+    "Mean review was 4.28 for on-time orders versus 2.26 for late orders; association does not establish causation.",
+    "Mean processing time was 2.85 days and mean shipping time was 9.33 days; available-timestamp samples differ.",
+    "170 sellers met the priority rule: at least 50 eligible orders and a late rate above the portfolio rate.",
+    "99,441 orders had a selected review; overall mean score was 4.07."
+  ],
+  "recommendations": [
+    "Audit high-volume sellers with above-baseline late rates first; verify carrier handoff records and inventory availability before attributing responsibility.",
+    "Compare processing and shipping separately on the same complete-timestamp sample before assigning an operational intervention.",
+    "Test revised delivery estimates on routes with persistent positive delays; track both promise accuracy and total transit time.",
+    "Use matched-route comparisons or controlled operational experiments to evaluate improvements in reviews."
+  ]
+}

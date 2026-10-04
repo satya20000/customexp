@@ -1,0 +1,6 @@
+one_table,one_key,many_table,many_key,cardinality,direction,active
+dim_customer,customer_id,fact_order,customer_id,1:*,Single: one to many,True
+dim_date,date,fact_order,purchase_date,1:*,Single: one to many,True
+fact_order,order_id,bridge_order_seller_category,order_id,1:*,Single: one to many,True
+dim_seller,seller_id,bridge_order_seller_category,seller_id,1:*,Single: one to many,True
+dim_category,category,bridge_order_seller_category,category,1:*,Single: one to many,True

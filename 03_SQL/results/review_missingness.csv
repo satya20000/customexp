@@ -1,0 +1,9 @@
+order_status,orders,reviewed,review_coverage
+approved,2,2,1.0
+canceled,625,625,1.0
+created,5,5,1.0
+delivered,96478,96478,1.0
+invoiced,314,314,1.0
+processing,301,301,1.0
+shipped,1107,1107,1.0
+unavailable,609,609,1.0

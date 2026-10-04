@@ -1,0 +1,96 @@
+{
+  "dim_customer": {
+    "customer_id": "type text",
+    "customer_unique_id": "type text",
+    "customer_zip_code_prefix": "Int64.Type",
+    "customer_city": "type text",
+    "customer_state": "type text"
+  },
+  "dim_category": {
+    "category": "type text"
+  },
+  "dim_date": {
+    "date": "type date",
+    "year": "Int64.Type",
+    "month": "type text",
+    "quarter": "Int64.Type",
+    "month_number": "Int64.Type"
+  },
+  "dim_product": {
+    "product_id": "type text",
+    "product_category_name": "type text",
+    "product_name_lenght": "type number",
+    "product_description_lenght": "type number",
+    "product_photos_qty": "type number",
+    "product_weight_g": "type number",
+    "product_length_cm": "type number",
+    "product_height_cm": "type number",
+    "product_width_cm": "type number"
+  },
+  "fact_order": {
+    "order_id": "type text",
+    "customer_id": "type text",
+    "order_status": "type text",
+    "order_purchase_timestamp": "type datetime",
+    "order_approved_at": "type text",
+    "order_delivered_carrier_date": "type text",
+    "order_delivered_customer_date": "type text",
+    "order_estimated_delivery_date": "type text",
+    "gmv": "type number",
+    "freight": "type number",
+    "items": "type number",
+    "payment_value": "type number",
+    "customer_unique_id": "type text",
+    "customer_zip_code_prefix": "Int64.Type",
+    "customer_city": "type text",
+    "customer_state": "type text",
+    "review_score": "Int64.Type",
+    "cancelled": "Int64.Type",
+    "delivered": "Int64.Type",
+    "eligible_delivery": "Int64.Type",
+    "delay_days": "type number",
+    "late": "type number",
+    "processing_days": "type number",
+    "shipping_days": "type number",
+    "delivery_days": "type number",
+    "delay_band": "type text",
+    "purchase_month": "type text",
+    "purchase_date": "type date"
+  },
+  "dim_seller": {
+    "seller_id": "type text",
+    "seller_zip_code_prefix": "Int64.Type",
+    "seller_city": "type text",
+    "seller_state": "type text"
+  },
+  "fact_payment": {
+    "order_id": "type text",
+    "payment_sequential": "Int64.Type",
+    "payment_type": "type text",
+    "payment_installments": "Int64.Type",
+    "payment_value": "type number"
+  },
+  "seller_performance": {
+    "seller_id": "type text",
+    "orders": "Int64.Type",
+    "eligible": "Int64.Type",
+    "late_rate": "type number",
+    "review_score": "type number",
+    "processing_days": "type number",
+    "shipping_days": "type number",
+    "segment": "type text"
+  },
+  "bridge_order_seller_category": {
+    "order_id": "type text",
+    "seller_id": "type text",
+    "seller_state": "type text",
+    "category": "type text",
+    "item_gmv": "type number",
+    "item_freight": "type number"
+  },
+  "dim_geography": {
+    "geolocation_zip_code_prefix": "Int64.Type",
+    "latitude": "type number",
+    "longitude": "type number"
+  }
+}

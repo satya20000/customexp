@@ -1,0 +1,50 @@
+[
+  {
+    "check": "FK order_id",
+    "passed": true
+  },
+  {
+    "check": "FK seller_id",
+    "passed": true
+  },
+  {
+    "check": "FK product_id",
+    "passed": true
+  },
+  {
+    "check": "FK customer_id",
+    "passed": true
+  },
+  {
+    "check": "FK order_id",
+    "passed": true
+  },
+  {
+    "check": "Nonnegative item price/freight",
+    "passed": true
+  },
+  {
+    "check": "FK order_id",
+    "passed": true
+  },
+  {
+    "check": "Review scores within 1-5",
+    "passed": true
+  },
+  {
+    "check": "Order grain preserved",
+    "passed": true
+  },
+  {
+    "check": "Order GMV reconciles with items",
+    "passed": true
+  },
+  {
+    "check": "Order payments reconcile",
+    "passed": true
+  },
+  {
+    "check": "SQLite integrity_check",
+    "passed": true
+  }
+]
