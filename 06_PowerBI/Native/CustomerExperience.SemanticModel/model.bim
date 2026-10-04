@@ -1,0 +1,744 @@
+{
+  "name": "CustomerExperience",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": false
+    },
+    "expressions": [
+      {
+        "name": "DataFolder",
+        "kind": "m",
+        "expression": "\"C:\\PowerBI\\Data\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+      }
+    ],
+    "tables": [
+      {
+        "name": "fact_order",
+        "columns": [
+          {
+            "name": "order_id",
+            "dataType": "string",
+            "sourceColumn": "order_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_status",
+            "dataType": "string",
+            "sourceColumn": "order_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_purchase_timestamp",
+            "dataType": "dateTime",
+            "sourceColumn": "order_purchase_timestamp",
+            "summarizeBy": "none",
+            "formatString": "yyyy-MM-dd HH:mm"
+          },
+          {
+            "name": "order_approved_at",
+            "dataType": "string",
+            "sourceColumn": "order_approved_at",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_delivered_carrier_date",
+            "dataType": "string",
+            "sourceColumn": "order_delivered_carrier_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_delivered_customer_date",
+            "dataType": "string",
+            "sourceColumn": "order_delivered_customer_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_estimated_delivery_date",
+            "dataType": "string",
+            "sourceColumn": "order_estimated_delivery_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "gmv",
+            "dataType": "double",
+            "sourceColumn": "gmv",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "freight",
+            "dataType": "double",
+            "sourceColumn": "freight",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "items",
+            "dataType": "double",
+            "sourceColumn": "items",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "payment_value",
+            "dataType": "double",
+            "sourceColumn": "payment_value",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_unique_id",
+            "dataType": "string",
+            "sourceColumn": "customer_unique_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_zip_code_prefix",
+            "dataType": "int64",
+            "sourceColumn": "customer_zip_code_prefix",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_city",
+            "dataType": "string",
+            "sourceColumn": "customer_city",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_state",
+            "dataType": "string",
+            "sourceColumn": "customer_state",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "review_score",
+            "dataType": "int64",
+            "sourceColumn": "review_score",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cancelled",
+            "dataType": "int64",
+            "sourceColumn": "cancelled",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "delivered",
+            "dataType": "int64",
+            "sourceColumn": "delivered",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "eligible_delivery",
+            "dataType": "int64",
+            "sourceColumn": "eligible_delivery",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "delay_days",
+            "dataType": "double",
+            "sourceColumn": "delay_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "late",
+            "dataType": "double",
+            "sourceColumn": "late",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "processing_days",
+            "dataType": "double",
+            "sourceColumn": "processing_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "shipping_days",
+            "dataType": "double",
+            "sourceColumn": "shipping_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "delivery_days",
+            "dataType": "double",
+            "sourceColumn": "delivery_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "delay_band",
+            "dataType": "string",
+            "sourceColumn": "delay_band",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "purchase_month",
+            "dataType": "string",
+            "sourceColumn": "purchase_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "purchase_date",
+            "dataType": "dateTime",
+            "sourceColumn": "purchase_date",
+            "summarizeBy": "none",
+            "formatString": "yyyy-MM-dd"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_order",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\fact_order.csv\"), [Delimiter=\",\", Columns=28, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Nulls = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(Nulls, {{\"order_id\", type text}, {\"customer_id\", type text}, {\"order_status\", type text}, {\"order_purchase_timestamp\", type datetime}, {\"order_approved_at\", type text}, {\"order_delivered_carrier_date\", type text}, {\"order_delivered_customer_date\", type text}, {\"order_estimated_delivery_date\", type text}, {\"gmv\", type number}, {\"freight\", type number}, {\"items\", type number}, {\"payment_value\", type number}, {\"customer_unique_id\", type text}, {\"customer_zip_code_prefix\", Int64.Type}, {\"customer_city\", type text}, {\"customer_state\", type text}, {\"review_score\", Int64.Type}, {\"cancelled\", Int64.Type}, {\"delivered\", Int64.Type}, {\"eligible_delivery\", Int64.Type}, {\"delay_days\", type number}, {\"late\", type number}, {\"processing_days\", type number}, {\"shipping_days\", type number}, {\"delivery_days\", type number}, {\"delay_band\", type text}, {\"purchase_month\", type text}, {\"purchase_date\", type date}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Orders",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(COUNTROWS(fact_order), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), COUNTROWS(fact_order))",
+            "displayFolder": "Performance",
+            "description": "Total Orders; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Delivered Orders",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(SUM(fact_order[delivered]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), SUM(fact_order[delivered]))",
+            "displayFolder": "Performance",
+            "description": "Delivered Orders; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Cancelled Orders",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(SUM(fact_order[cancelled]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), SUM(fact_order[cancelled]))",
+            "displayFolder": "Performance",
+            "description": "Cancelled Orders; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Cancellation Rate",
+            "expression": "DIVIDE([Cancelled Orders], [Total Orders])",
+            "displayFolder": "Performance",
+            "description": "Cancellation Rate; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Eligible Deliveries",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(SUM(fact_order[eligible_delivery]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), SUM(fact_order[eligible_delivery]))",
+            "displayFolder": "Performance",
+            "description": "Eligible Deliveries; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Late Deliveries",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(SUM(fact_order[late]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), SUM(fact_order[late]))",
+            "displayFolder": "Performance",
+            "description": "Late Deliveries; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Late Delivery Rate",
+            "expression": "DIVIDE([Late Deliveries], [Eligible Deliveries])",
+            "displayFolder": "Performance",
+            "description": "Late Delivery Rate; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "On Time Delivery Rate",
+            "expression": "IF([Eligible Deliveries] > 0, 1 - [Late Delivery Rate], BLANK())",
+            "displayFolder": "Performance",
+            "description": "On Time Delivery Rate; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Average Delivery Days",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[delivery_days]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[delivery_days]))",
+            "displayFolder": "Performance",
+            "description": "Average Delivery Days; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Average Processing Days",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[processing_days]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[processing_days]))",
+            "displayFolder": "Performance",
+            "description": "Average Processing Days; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Average Shipping Days",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[shipping_days]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[shipping_days]))",
+            "displayFolder": "Performance",
+            "description": "Average Shipping Days; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0\" pp\";-0.0\" pp\";0.0\" pp\""
+          },
+          {
+            "name": "Average Delay Days",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(CALCULATE(AVERAGE(fact_order[delay_days]), fact_order[late] = 1), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), CALCULATE(AVERAGE(fact_order[delay_days]), fact_order[late] = 1))",
+            "displayFolder": "Performance",
+            "description": "Average Delay Days; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Average Review Score",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[review_score]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[review_score]))",
+            "displayFolder": "Performance",
+            "description": "Average Review Score; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Reviewed Orders",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(COUNT(fact_order[review_score]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), COUNT(fact_order[review_score]))",
+            "displayFolder": "Performance",
+            "description": "Reviewed Orders; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "One Star Rate",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(DIVIDE(CALCULATE([Reviewed Orders], fact_order[review_score] = 1), [Reviewed Orders]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), DIVIDE(CALCULATE([Reviewed Orders], fact_order[review_score] = 1), [Reviewed Orders]))",
+            "displayFolder": "Performance",
+            "description": "One Star Rate; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Five Star Rate",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(DIVIDE(CALCULATE([Reviewed Orders], fact_order[review_score] = 5), [Reviewed Orders]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), DIVIDE(CALCULATE([Reviewed Orders], fact_order[review_score] = 5), [Reviewed Orders]))",
+            "displayFolder": "Performance",
+            "description": "Five Star Rate; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Average Freight",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[freight]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[freight]))",
+            "displayFolder": "Performance",
+            "description": "Average Freight; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "\"BRL \"#,0.00;(#,0.00);0.00"
+          },
+          {
+            "name": "Item AOV",
+            "expression": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[gmv]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[gmv]))",
+            "displayFolder": "Performance",
+            "description": "Item AOV; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "\"BRL \"#,0.00;(#,0.00);0.00"
+          },
+          {
+            "name": "On Time Review Score",
+            "expression": "CALCULATE([Average Review Score], fact_order[eligible_delivery] = 1, fact_order[late] = 0)",
+            "displayFolder": "Performance",
+            "description": "On Time Review Score; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Late Review Score",
+            "expression": "CALCULATE([Average Review Score], fact_order[late] = 1)",
+            "displayFolder": "Performance",
+            "description": "Late Review Score; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Review Score Gap",
+            "expression": "[On Time Review Score] - [Late Review Score]",
+            "displayFolder": "Performance",
+            "description": "Review Score Gap; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Seller Baseline Late Rate",
+            "expression": "CALCULATE([Late Delivery Rate], REMOVEFILTERS(dim_seller))",
+            "displayFolder": "Investigations",
+            "description": "Seller Baseline Late Rate; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Seller Excess Late pp",
+            "expression": "100 * ([Late Delivery Rate] - [Seller Baseline Late Rate])",
+            "displayFolder": "Investigations",
+            "description": "Seller Excess Late pp; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0\" pp\";-0.0\" pp\";0.0\" pp\""
+          },
+          {
+            "name": "Seller Priority Flag",
+            "expression": "IF([Eligible Deliveries] >= 50 && [Late Delivery Rate] > [Seller Baseline Late Rate], 1, BLANK())",
+            "displayFolder": "Investigations",
+            "description": "Seller Priority Flag; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Eligible Delivery Coverage",
+            "expression": "DIVIDE([Eligible Deliveries], [Delivered Orders])",
+            "displayFolder": "Context & quality",
+            "description": "Eligible Delivery Coverage; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Comparable Monthly Late Rate",
+            "expression": "IF([Eligible Deliveries] >= 100, [Late Delivery Rate], BLANK())",
+            "displayFolder": "Performance",
+            "description": "Comparable Monthly Late Rate; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Common Duration Orders",
+            "expression": "CALCULATE([Total Orders], FILTER(fact_order, NOT ISBLANK(fact_order[processing_days]) && NOT ISBLANK(fact_order[shipping_days])))",
+            "displayFolder": "Performance",
+            "description": "Common Duration Orders; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Common Processing Days",
+            "expression": "CALCULATE([Average Processing Days], FILTER(fact_order, NOT ISBLANK(fact_order[processing_days]) && NOT ISBLANK(fact_order[shipping_days])))",
+            "displayFolder": "Performance",
+            "description": "Common Processing Days; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Common Shipping Days",
+            "expression": "CALCULATE([Average Shipping Days], FILTER(fact_order, NOT ISBLANK(fact_order[processing_days]) && NOT ISBLANK(fact_order[shipping_days])))",
+            "displayFolder": "Performance",
+            "description": "Common Shipping Days; defined over the current slicer and visual context. See report definitions and DAX source for population policy.",
+            "formatString": "0.0\" pp\";-0.0\" pp\";0.0\" pp\""
+          },
+          {
+            "name": "Context Insight",
+            "expression": "IF([Eligible Deliveries] = 0, \"No eligible deliveries in the current selection\", FORMAT([Late Deliveries], \"#,0\") & \" late deliveries; late-order reviews average \" & FORMAT([Late Review Score], \"0.00\") & \" vs \" & FORMAT([On Time Review Score], \"0.00\") & \" on time. Investigate routes and handoff stages; association is not causation.\")",
+            "displayFolder": "Context & quality",
+            "description": "Context Insight; defined over the current slicer and visual context. See report definitions and DAX source for population policy."
+          },
+          {
+            "name": "Period Coverage",
+            "expression": "FORMAT(MIN(fact_order[purchase_date]), \"dd MMM yyyy\") & \" – \" & FORMAT(MAX(fact_order[purchase_date]), \"dd MMM yyyy\")",
+            "displayFolder": "Context & quality",
+            "description": "Period Coverage; defined over the current slicer and visual context. See report definitions and DAX source for population policy."
+          }
+        ]
+      },
+      {
+        "name": "bridge_order_seller_category",
+        "columns": [
+          {
+            "name": "order_id",
+            "dataType": "string",
+            "sourceColumn": "order_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "seller_id",
+            "dataType": "string",
+            "sourceColumn": "seller_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "seller_state",
+            "dataType": "string",
+            "sourceColumn": "seller_state",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "category",
+            "dataType": "string",
+            "sourceColumn": "category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "item_gmv",
+            "dataType": "double",
+            "sourceColumn": "item_gmv",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "item_freight",
+            "dataType": "double",
+            "sourceColumn": "item_freight",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "bridge_order_seller_category",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\bridge_order_seller_category.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Nulls = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(Nulls, {{\"order_id\", type text}, {\"seller_id\", type text}, {\"seller_state\", type text}, {\"category\", type text}, {\"item_gmv\", type number}, {\"item_freight\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_date",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date",
+            "summarizeBy": "none",
+            "formatString": "yyyy-MM-dd"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month",
+            "dataType": "string",
+            "sourceColumn": "month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quarter",
+            "dataType": "int64",
+            "sourceColumn": "quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_number",
+            "dataType": "int64",
+            "sourceColumn": "month_number",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\dim_date.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Nulls = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(Nulls, {{\"date\", type date}, {\"year\", Int64.Type}, {\"month\", type text}, {\"quarter\", Int64.Type}, {\"month_number\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "description": "Single-direction dimension; keys validated against source data."
+      },
+      {
+        "name": "dim_customer",
+        "columns": [
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_unique_id",
+            "dataType": "string",
+            "sourceColumn": "customer_unique_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_zip_code_prefix",
+            "dataType": "int64",
+            "sourceColumn": "customer_zip_code_prefix",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_city",
+            "dataType": "string",
+            "sourceColumn": "customer_city",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_state",
+            "dataType": "string",
+            "sourceColumn": "customer_state",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_customer",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\dim_customer.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Nulls = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(Nulls, {{\"customer_id\", type text}, {\"customer_unique_id\", type text}, {\"customer_zip_code_prefix\", Int64.Type}, {\"customer_city\", type text}, {\"customer_state\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "description": "Single-direction dimension; keys validated against source data."
+      },
+      {
+        "name": "dim_seller",
+        "columns": [
+          {
+            "name": "seller_id",
+            "dataType": "string",
+            "sourceColumn": "seller_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "seller_zip_code_prefix",
+            "dataType": "int64",
+            "sourceColumn": "seller_zip_code_prefix",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "seller_city",
+            "dataType": "string",
+            "sourceColumn": "seller_city",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "seller_state",
+            "dataType": "string",
+            "sourceColumn": "seller_state",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_seller",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\dim_seller.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Nulls = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(Nulls, {{\"seller_id\", type text}, {\"seller_zip_code_prefix\", Int64.Type}, {\"seller_city\", type text}, {\"seller_state\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "description": "Single-direction dimension; keys validated against source data."
+      },
+      {
+        "name": "dim_category",
+        "columns": [
+          {
+            "name": "category",
+            "dataType": "string",
+            "sourceColumn": "category",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_category",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\dim_category.csv\"), [Delimiter=\",\", Columns=1, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Nulls = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(Nulls, {{\"category\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "description": "Single-direction dimension; keys validated against source data."
+      }
+    ],
+    "relationships": [
+      {
+        "name": "9cad05e4-ba25-5d3d-8ce9-18f868198d47",
+        "fromTable": "fact_order",
+        "fromColumn": "customer_id",
+        "toTable": "dim_customer",
+        "toColumn": "customer_id",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "5fd582ac-b85e-58b9-a02d-d8c6e8aa4db4",
+        "fromTable": "fact_order",
+        "fromColumn": "purchase_date",
+        "toTable": "dim_date",
+        "toColumn": "date",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "35078cc7-c36b-5957-965d-dc9fe1c0f360",
+        "fromTable": "bridge_order_seller_category",
+        "fromColumn": "order_id",
+        "toTable": "fact_order",
+        "toColumn": "order_id",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "44ed0443-7165-5913-b50e-3bde129cfff6",
+        "fromTable": "bridge_order_seller_category",
+        "fromColumn": "seller_id",
+        "toTable": "dim_seller",
+        "toColumn": "seller_id",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "29d938ed-ae5e-5a3f-a3c9-2499b0a09d17",
+        "fromTable": "bridge_order_seller_category",
+        "fromColumn": "category",
+        "toTable": "dim_category",
+        "toColumn": "category",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"fact_order\", \"bridge_order_seller_category\", \"dim_date\", \"dim_customer\", \"dim_seller\", \"dim_category\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      }
+    ]
+  }
+}

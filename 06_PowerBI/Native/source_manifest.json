@@ -1,0 +1,37 @@
+{
+  "classification": "historical real-source snapshot",
+  "sourceProject": "04_Olist_Customer_Experience",
+  "files": [
+    {
+      "table": "fact_order",
+      "file": "02_Cleaned_Data/fact_order.csv",
+      "sha256": "ed9f921ea54e113c6be09eaed1477b700edcc7f1f4365aa695805e071c7fbfef"
+    },
+    {
+      "table": "bridge_order_seller_category",
+      "file": "02_Cleaned_Data/bridge_order_seller_category.csv",
+      "sha256": "2ff7d4484e5dccc5107b3ac6c0152514e06efe767179fe78d7ca0819e8576528"
+    },
+    {
+      "table": "dim_date",
+      "file": "02_Cleaned_Data/dim_date.csv",
+      "sha256": "967f1e2eb11a0e7d576ea85043629957997f8bc63a343c97b8981713fd4292f4"
+    },
+    {
+      "table": "dim_customer",
+      "file": "02_Cleaned_Data/dim_customer.csv",
+      "sha256": "475b42289a55dcb78d3ee7208511e03c4baa39b72d9402838273e318edaee43c"
+    },
+    {
+      "table": "dim_seller",
+      "file": "02_Cleaned_Data/dim_seller.csv",
+      "sha256": "0821e5d29f888035b20df55afb4d59f6fcc84c39f44ac6feef2cb74f08336281"
+    },
+    {
+      "table": "dim_category",
+      "file": "02_Cleaned_Data/dim_category.csv",
+      "sha256": "9193a2abc27c4a33530b816f49feb9426e18e911cce5b821a64c2a359bda98d7"
+    }
+  ],
+  "generatedSellerDimension": null
+}

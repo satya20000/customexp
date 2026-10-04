@@ -1,0 +1,1952 @@
+{
+  "project": "CustomerExperience",
+  "pages": [
+    {
+      "name": "page1",
+      "title": "Overview",
+      "count": 13,
+      "visuals": [
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 24,
+            "y": 12,
+            "width": 1388,
+            "height": 62,
+            "z": 1,
+            "tabOrder": 1
+          },
+          "roles": {}
+        },
+        {
+          "type": "slicer",
+          "title": "Purchase month",
+          "position": {
+            "x": 24,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 2,
+            "tabOrder": 2
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_date"
+                      }
+                    },
+                    "Property": "month"
+                  }
+                },
+                "queryRef": "dim_date.month",
+                "nativeQueryRef": "month",
+                "displayName": "Purchase month"
+              }
+            ]
+          }
+        },
+        {
+          "type": "slicer",
+          "title": "Customer state",
+          "position": {
+            "x": 496,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 3,
+            "tabOrder": 3
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "customer_state"
+                  }
+                },
+                "queryRef": "fact_order.customer_state",
+                "nativeQueryRef": "customer_state",
+                "displayName": "Customer state"
+              }
+            ]
+          }
+        },
+        {
+          "type": "slicer",
+          "title": "Product category",
+          "position": {
+            "x": 968,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 4,
+            "tabOrder": 4
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_category"
+                      }
+                    },
+                    "Property": "category"
+                  }
+                },
+                "queryRef": "dim_category.category",
+                "nativeQueryRef": "category",
+                "displayName": "Product category"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Total Orders",
+          "position": {
+            "x": 24,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 5,
+            "tabOrder": 5
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Total Orders"
+                  }
+                },
+                "queryRef": "fact_order.Total Orders",
+                "nativeQueryRef": "Total Orders",
+                "displayName": "Total Orders"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Late Delivery Rate",
+          "position": {
+            "x": 378,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 6,
+            "tabOrder": 6
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Delivery Rate"
+                  }
+                },
+                "queryRef": "fact_order.Late Delivery Rate",
+                "nativeQueryRef": "Late Delivery Rate",
+                "displayName": "Late Delivery Rate"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Average Review Score",
+          "position": {
+            "x": 732,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 7,
+            "tabOrder": 7
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Average Review Score"
+                  }
+                },
+                "queryRef": "fact_order.Average Review Score",
+                "nativeQueryRef": "Average Review Score",
+                "displayName": "Average Review Score"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Cancellation Rate",
+          "position": {
+            "x": 1086,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 8,
+            "tabOrder": 8
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Cancellation Rate"
+                  }
+                },
+                "queryRef": "fact_order.Cancellation Rate",
+                "nativeQueryRef": "Cancellation Rate",
+                "displayName": "Cancellation Rate"
+              }
+            ]
+          }
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 24,
+            "y": 918,
+            "width": 1392,
+            "height": 32,
+            "z": 9,
+            "tabOrder": 9
+          },
+          "roles": {}
+        },
+        {
+          "type": "lineChart",
+          "title": "Monthly late rate · ≥100 eligible deliveries",
+          "position": {
+            "x": 24,
+            "y": 300,
+            "width": 684,
+            "height": 282,
+            "z": 10,
+            "tabOrder": 10
+          },
+          "roles": {
+            "Category": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_date"
+                      }
+                    },
+                    "Property": "month"
+                  }
+                },
+                "queryRef": "dim_date.month",
+                "nativeQueryRef": "month",
+                "displayName": "Month"
+              }
+            ],
+            "Y": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Comparable Monthly Late Rate"
+                  }
+                },
+                "queryRef": "fact_order.Comparable Monthly Late Rate",
+                "nativeQueryRef": "Comparable Monthly Late Rate",
+                "displayName": "Comparable Monthly Late Rate"
+              }
+            ],
+            "Tooltips": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Eligible Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Eligible Deliveries",
+                "nativeQueryRef": "Eligible Deliveries",
+                "displayName": "Eligible Deliveries"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Late Deliveries",
+                "nativeQueryRef": "Late Deliveries",
+                "displayName": "Late Deliveries"
+              }
+            ]
+          }
+        },
+        {
+          "type": "clusteredBarChart",
+          "title": "Late-delivery rate by customer state",
+          "position": {
+            "x": 732,
+            "y": 300,
+            "width": 684,
+            "height": 282,
+            "z": 11,
+            "tabOrder": 11
+          },
+          "roles": {
+            "Category": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "customer_state"
+                  }
+                },
+                "queryRef": "fact_order.customer_state",
+                "nativeQueryRef": "customer_state",
+                "displayName": "Customer State"
+              }
+            ],
+            "Y": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Delivery Rate"
+                  }
+                },
+                "queryRef": "fact_order.Late Delivery Rate",
+                "nativeQueryRef": "Late Delivery Rate",
+                "displayName": "Late Delivery Rate"
+              }
+            ]
+          }
+        },
+        {
+          "type": "clusteredColumnChart",
+          "title": "Reviews by delivery promise band",
+          "position": {
+            "x": 24,
+            "y": 602,
+            "width": 684,
+            "height": 290,
+            "z": 12,
+            "tabOrder": 12
+          },
+          "roles": {
+            "Category": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "delay_band"
+                  }
+                },
+                "queryRef": "fact_order.delay_band",
+                "nativeQueryRef": "delay_band",
+                "displayName": "Delay Band"
+              }
+            ],
+            "Y": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Average Review Score"
+                  }
+                },
+                "queryRef": "fact_order.Average Review Score",
+                "nativeQueryRef": "Average Review Score",
+                "displayName": "Average Review Score"
+              }
+            ],
+            "Tooltips": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Eligible Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Eligible Deliveries",
+                "nativeQueryRef": "Eligible Deliveries",
+                "displayName": "Eligible Deliveries"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Total Orders"
+                  }
+                },
+                "queryRef": "fact_order.Total Orders",
+                "nativeQueryRef": "Total Orders",
+                "displayName": "Total Orders"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Investigation context",
+          "position": {
+            "x": 732,
+            "y": 602,
+            "width": 684,
+            "height": 290,
+            "z": 13,
+            "tabOrder": 13
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Context Insight"
+                  }
+                },
+                "queryRef": "fact_order.Context Insight",
+                "nativeQueryRef": "Context Insight",
+                "displayName": "Context Insight"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "page2",
+      "title": "Delivery drivers",
+      "count": 12,
+      "visuals": [
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 24,
+            "y": 12,
+            "width": 1388,
+            "height": 62,
+            "z": 1,
+            "tabOrder": 1
+          },
+          "roles": {}
+        },
+        {
+          "type": "slicer",
+          "title": "Purchase month",
+          "position": {
+            "x": 24,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 2,
+            "tabOrder": 2
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_date"
+                      }
+                    },
+                    "Property": "month"
+                  }
+                },
+                "queryRef": "dim_date.month",
+                "nativeQueryRef": "month",
+                "displayName": "Purchase month"
+              }
+            ]
+          }
+        },
+        {
+          "type": "slicer",
+          "title": "Customer state",
+          "position": {
+            "x": 496,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 3,
+            "tabOrder": 3
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "customer_state"
+                  }
+                },
+                "queryRef": "fact_order.customer_state",
+                "nativeQueryRef": "customer_state",
+                "displayName": "Customer state"
+              }
+            ]
+          }
+        },
+        {
+          "type": "slicer",
+          "title": "Product category",
+          "position": {
+            "x": 968,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 4,
+            "tabOrder": 4
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_category"
+                      }
+                    },
+                    "Property": "category"
+                  }
+                },
+                "queryRef": "dim_category.category",
+                "nativeQueryRef": "category",
+                "displayName": "Product category"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Eligible Deliveries",
+          "position": {
+            "x": 24,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 5,
+            "tabOrder": 5
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Eligible Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Eligible Deliveries",
+                "nativeQueryRef": "Eligible Deliveries",
+                "displayName": "Eligible Deliveries"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Common Duration Orders",
+          "position": {
+            "x": 378,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 6,
+            "tabOrder": 6
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Common Duration Orders"
+                  }
+                },
+                "queryRef": "fact_order.Common Duration Orders",
+                "nativeQueryRef": "Common Duration Orders",
+                "displayName": "Common Duration Orders"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Common Processing Days",
+          "position": {
+            "x": 732,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 7,
+            "tabOrder": 7
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Common Processing Days"
+                  }
+                },
+                "queryRef": "fact_order.Common Processing Days",
+                "nativeQueryRef": "Common Processing Days",
+                "displayName": "Common Processing Days"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Common Shipping Days",
+          "position": {
+            "x": 1086,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 8,
+            "tabOrder": 8
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Common Shipping Days"
+                  }
+                },
+                "queryRef": "fact_order.Common Shipping Days",
+                "nativeQueryRef": "Common Shipping Days",
+                "displayName": "Common Shipping Days"
+              }
+            ]
+          }
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 24,
+            "y": 918,
+            "width": 1392,
+            "height": 32,
+            "z": 9,
+            "tabOrder": 9
+          },
+          "roles": {}
+        },
+        {
+          "type": "lineChart",
+          "title": "Processing and shipping · same complete-timestamp sample",
+          "position": {
+            "x": 24,
+            "y": 300,
+            "width": 684,
+            "height": 282,
+            "z": 10,
+            "tabOrder": 10
+          },
+          "roles": {
+            "Category": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_date"
+                      }
+                    },
+                    "Property": "month"
+                  }
+                },
+                "queryRef": "dim_date.month",
+                "nativeQueryRef": "month",
+                "displayName": "Month"
+              }
+            ],
+            "Y": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Common Processing Days"
+                  }
+                },
+                "queryRef": "fact_order.Common Processing Days",
+                "nativeQueryRef": "Common Processing Days",
+                "displayName": "Common Processing Days"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Common Shipping Days"
+                  }
+                },
+                "queryRef": "fact_order.Common Shipping Days",
+                "nativeQueryRef": "Common Shipping Days",
+                "displayName": "Common Shipping Days"
+              }
+            ]
+          }
+        },
+        {
+          "type": "clusteredBarChart",
+          "title": "Late-delivery rate by category · distinct order membership",
+          "position": {
+            "x": 732,
+            "y": 300,
+            "width": 684,
+            "height": 282,
+            "z": 11,
+            "tabOrder": 11
+          },
+          "roles": {
+            "Category": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_category"
+                      }
+                    },
+                    "Property": "category"
+                  }
+                },
+                "queryRef": "dim_category.category",
+                "nativeQueryRef": "category",
+                "displayName": "Category"
+              }
+            ],
+            "Y": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Delivery Rate"
+                  }
+                },
+                "queryRef": "fact_order.Late Delivery Rate",
+                "nativeQueryRef": "Late Delivery Rate",
+                "displayName": "Late Delivery Rate"
+              }
+            ],
+            "Tooltips": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Eligible Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Eligible Deliveries",
+                "nativeQueryRef": "Eligible Deliveries",
+                "displayName": "Eligible Deliveries"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Late Deliveries",
+                "nativeQueryRef": "Late Deliveries",
+                "displayName": "Late Deliveries"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tableEx",
+          "title": "Route investigation · customer states with counts and review context",
+          "position": {
+            "x": 24,
+            "y": 600,
+            "width": 1392,
+            "height": 292,
+            "z": 12,
+            "tabOrder": 12
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "customer_state"
+                  }
+                },
+                "queryRef": "fact_order.customer_state",
+                "nativeQueryRef": "customer_state",
+                "displayName": "Customer state"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Eligible Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Eligible Deliveries",
+                "nativeQueryRef": "Eligible Deliveries",
+                "displayName": "Eligible Deliveries"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Late Deliveries",
+                "nativeQueryRef": "Late Deliveries",
+                "displayName": "Late Deliveries"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Delivery Rate"
+                  }
+                },
+                "queryRef": "fact_order.Late Delivery Rate",
+                "nativeQueryRef": "Late Delivery Rate",
+                "displayName": "Late Delivery Rate"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Common Processing Days"
+                  }
+                },
+                "queryRef": "fact_order.Common Processing Days",
+                "nativeQueryRef": "Common Processing Days",
+                "displayName": "Common Processing Days"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Common Shipping Days"
+                  }
+                },
+                "queryRef": "fact_order.Common Shipping Days",
+                "nativeQueryRef": "Common Shipping Days",
+                "displayName": "Common Shipping Days"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Average Review Score"
+                  }
+                },
+                "queryRef": "fact_order.Average Review Score",
+                "nativeQueryRef": "Average Review Score",
+                "displayName": "Average Review Score"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "page3",
+      "title": "Seller investigations",
+      "count": 12,
+      "visuals": [
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 24,
+            "y": 12,
+            "width": 1388,
+            "height": 62,
+            "z": 1,
+            "tabOrder": 1
+          },
+          "roles": {}
+        },
+        {
+          "type": "slicer",
+          "title": "Purchase month",
+          "position": {
+            "x": 24,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 2,
+            "tabOrder": 2
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_date"
+                      }
+                    },
+                    "Property": "month"
+                  }
+                },
+                "queryRef": "dim_date.month",
+                "nativeQueryRef": "month",
+                "displayName": "Purchase month"
+              }
+            ]
+          }
+        },
+        {
+          "type": "slicer",
+          "title": "Customer state",
+          "position": {
+            "x": 496,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 3,
+            "tabOrder": 3
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "customer_state"
+                  }
+                },
+                "queryRef": "fact_order.customer_state",
+                "nativeQueryRef": "customer_state",
+                "displayName": "Customer state"
+              }
+            ]
+          }
+        },
+        {
+          "type": "slicer",
+          "title": "Product category",
+          "position": {
+            "x": 968,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 4,
+            "tabOrder": 4
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_category"
+                      }
+                    },
+                    "Property": "category"
+                  }
+                },
+                "queryRef": "dim_category.category",
+                "nativeQueryRef": "category",
+                "displayName": "Product category"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Eligible Deliveries",
+          "position": {
+            "x": 24,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 5,
+            "tabOrder": 5
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Eligible Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Eligible Deliveries",
+                "nativeQueryRef": "Eligible Deliveries",
+                "displayName": "Eligible Deliveries"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Late Deliveries",
+          "position": {
+            "x": 378,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 6,
+            "tabOrder": 6
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Late Deliveries",
+                "nativeQueryRef": "Late Deliveries",
+                "displayName": "Late Deliveries"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "On Time Review Score",
+          "position": {
+            "x": 732,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 7,
+            "tabOrder": 7
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "On Time Review Score"
+                  }
+                },
+                "queryRef": "fact_order.On Time Review Score",
+                "nativeQueryRef": "On Time Review Score",
+                "displayName": "On Time Review Score"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Late Review Score",
+          "position": {
+            "x": 1086,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 8,
+            "tabOrder": 8
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Review Score"
+                  }
+                },
+                "queryRef": "fact_order.Late Review Score",
+                "nativeQueryRef": "Late Review Score",
+                "displayName": "Late Review Score"
+              }
+            ]
+          }
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 24,
+            "y": 918,
+            "width": 1392,
+            "height": 32,
+            "z": 9,
+            "tabOrder": 9
+          },
+          "roles": {}
+        },
+        {
+          "type": "clusteredBarChart",
+          "title": "Late-delivery rate by seller state",
+          "position": {
+            "x": 24,
+            "y": 300,
+            "width": 684,
+            "height": 282,
+            "z": 10,
+            "tabOrder": 10
+          },
+          "roles": {
+            "Category": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_seller"
+                      }
+                    },
+                    "Property": "seller_state"
+                  }
+                },
+                "queryRef": "dim_seller.seller_state",
+                "nativeQueryRef": "seller_state",
+                "displayName": "Seller State"
+              }
+            ],
+            "Y": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Delivery Rate"
+                  }
+                },
+                "queryRef": "fact_order.Late Delivery Rate",
+                "nativeQueryRef": "Late Delivery Rate",
+                "displayName": "Late Delivery Rate"
+              }
+            ],
+            "Tooltips": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Eligible Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Eligible Deliveries",
+                "nativeQueryRef": "Eligible Deliveries",
+                "displayName": "Eligible Deliveries"
+              }
+            ]
+          }
+        },
+        {
+          "type": "clusteredBarChart",
+          "title": "Review score by product category",
+          "position": {
+            "x": 732,
+            "y": 300,
+            "width": 684,
+            "height": 282,
+            "z": 11,
+            "tabOrder": 11
+          },
+          "roles": {
+            "Category": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_category"
+                      }
+                    },
+                    "Property": "category"
+                  }
+                },
+                "queryRef": "dim_category.category",
+                "nativeQueryRef": "category",
+                "displayName": "Category"
+              }
+            ],
+            "Y": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Average Review Score"
+                  }
+                },
+                "queryRef": "fact_order.Average Review Score",
+                "nativeQueryRef": "Average Review Score",
+                "displayName": "Average Review Score"
+              }
+            ],
+            "Tooltips": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Reviewed Orders"
+                  }
+                },
+                "queryRef": "fact_order.Reviewed Orders",
+                "nativeQueryRef": "Reviewed Orders",
+                "displayName": "Reviewed Orders"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tableEx",
+          "title": "Seller review queue · ≥50 eligible orders and above peer late rate",
+          "position": {
+            "x": 24,
+            "y": 600,
+            "width": 1392,
+            "height": 292,
+            "z": 12,
+            "tabOrder": 12
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_seller"
+                      }
+                    },
+                    "Property": "seller_id"
+                  }
+                },
+                "queryRef": "dim_seller.seller_id",
+                "nativeQueryRef": "seller_id",
+                "displayName": "Seller ID"
+              },
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_seller"
+                      }
+                    },
+                    "Property": "seller_state"
+                  }
+                },
+                "queryRef": "dim_seller.seller_state",
+                "nativeQueryRef": "seller_state",
+                "displayName": "State"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Eligible Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Eligible Deliveries",
+                "nativeQueryRef": "Eligible Deliveries",
+                "displayName": "Eligible Deliveries"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Deliveries"
+                  }
+                },
+                "queryRef": "fact_order.Late Deliveries",
+                "nativeQueryRef": "Late Deliveries",
+                "displayName": "Late Deliveries"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Delivery Rate"
+                  }
+                },
+                "queryRef": "fact_order.Late Delivery Rate",
+                "nativeQueryRef": "Late Delivery Rate",
+                "displayName": "Late Delivery Rate"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Seller Excess Late pp"
+                  }
+                },
+                "queryRef": "fact_order.Seller Excess Late pp",
+                "nativeQueryRef": "Seller Excess Late pp",
+                "displayName": "Seller Excess Late pp"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Average Review Score"
+                  }
+                },
+                "queryRef": "fact_order.Average Review Score",
+                "nativeQueryRef": "Average Review Score",
+                "displayName": "Average Review Score"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Common Processing Days"
+                  }
+                },
+                "queryRef": "fact_order.Common Processing Days",
+                "nativeQueryRef": "Common Processing Days",
+                "displayName": "Common Processing Days"
+              },
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Common Shipping Days"
+                  }
+                },
+                "queryRef": "fact_order.Common Shipping Days",
+                "nativeQueryRef": "Common Shipping Days",
+                "displayName": "Common Shipping Days"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "page4",
+      "title": "Definitions & use",
+      "count": 19,
+      "visuals": [
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 24,
+            "y": 12,
+            "width": 1388,
+            "height": 62,
+            "z": 1,
+            "tabOrder": 1
+          },
+          "roles": {}
+        },
+        {
+          "type": "slicer",
+          "title": "Purchase month",
+          "position": {
+            "x": 24,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 2,
+            "tabOrder": 2
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_date"
+                      }
+                    },
+                    "Property": "month"
+                  }
+                },
+                "queryRef": "dim_date.month",
+                "nativeQueryRef": "month",
+                "displayName": "Purchase month"
+              }
+            ]
+          }
+        },
+        {
+          "type": "slicer",
+          "title": "Customer state",
+          "position": {
+            "x": 496,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 3,
+            "tabOrder": 3
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "customer_state"
+                  }
+                },
+                "queryRef": "fact_order.customer_state",
+                "nativeQueryRef": "customer_state",
+                "displayName": "Customer state"
+              }
+            ]
+          }
+        },
+        {
+          "type": "slicer",
+          "title": "Product category",
+          "position": {
+            "x": 968,
+            "y": 84,
+            "width": 448,
+            "height": 76,
+            "z": 4,
+            "tabOrder": 4
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dim_category"
+                      }
+                    },
+                    "Property": "category"
+                  }
+                },
+                "queryRef": "dim_category.category",
+                "nativeQueryRef": "category",
+                "displayName": "Product category"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Total Orders",
+          "position": {
+            "x": 24,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 5,
+            "tabOrder": 5
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Total Orders"
+                  }
+                },
+                "queryRef": "fact_order.Total Orders",
+                "nativeQueryRef": "Total Orders",
+                "displayName": "Total Orders"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Late Delivery Rate",
+          "position": {
+            "x": 378,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 6,
+            "tabOrder": 6
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Late Delivery Rate"
+                  }
+                },
+                "queryRef": "fact_order.Late Delivery Rate",
+                "nativeQueryRef": "Late Delivery Rate",
+                "displayName": "Late Delivery Rate"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Average Review Score",
+          "position": {
+            "x": 732,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 7,
+            "tabOrder": 7
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Average Review Score"
+                  }
+                },
+                "queryRef": "fact_order.Average Review Score",
+                "nativeQueryRef": "Average Review Score",
+                "displayName": "Average Review Score"
+              }
+            ]
+          }
+        },
+        {
+          "type": "card",
+          "title": "Cancellation Rate",
+          "position": {
+            "x": 1086,
+            "y": 180,
+            "width": 330,
+            "height": 98,
+            "z": 8,
+            "tabOrder": 8
+          },
+          "roles": {
+            "Values": [
+              {
+                "field": {
+                  "Measure": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_order"
+                      }
+                    },
+                    "Property": "Cancellation Rate"
+                  }
+                },
+                "queryRef": "fact_order.Cancellation Rate",
+                "nativeQueryRef": "Cancellation Rate",
+                "displayName": "Cancellation Rate"
+              }
+            ]
+          }
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 24,
+            "y": 918,
+            "width": 1392,
+            "height": 32,
+            "z": 9,
+            "tabOrder": 9
+          },
+          "roles": {}
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 32,
+            "y": 302,
+            "width": 1350,
+            "height": 30,
+            "z": 10,
+            "tabOrder": 10
+          },
+          "roles": {}
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 32,
+            "y": 337,
+            "width": 1350,
+            "height": 72,
+            "z": 11,
+            "tabOrder": 11
+          },
+          "roles": {}
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 32,
+            "y": 414,
+            "width": 1350,
+            "height": 30,
+            "z": 12,
+            "tabOrder": 12
+          },
+          "roles": {}
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 32,
+            "y": 449,
+            "width": 1350,
+            "height": 72,
+            "z": 13,
+            "tabOrder": 13
+          },
+          "roles": {}
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 32,
+            "y": 526,
+            "width": 1350,
+            "height": 30,
+            "z": 14,
+            "tabOrder": 14
+          },
+          "roles": {}
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 32,
+            "y": 561,
+            "width": 1350,
+            "height": 72,
+            "z": 15,
+            "tabOrder": 15
+          },
+          "roles": {}
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 32,
+            "y": 638,
+            "width": 1350,
+            "height": 30,
+            "z": 16,
+            "tabOrder": 16
+          },
+          "roles": {}
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 32,
+            "y": 673,
+            "width": 1350,
+            "height": 72,
+            "z": 17,
+            "tabOrder": 17
+          },
+          "roles": {}
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 32,
+            "y": 750,
+            "width": 1350,
+            "height": 30,
+            "z": 18,
+            "tabOrder": 18
+          },
+          "roles": {}
+        },
+        {
+          "type": "textbox",
+          "title": "",
+          "position": {
+            "x": 32,
+            "y": 785,
+            "width": 1350,
+            "height": 72,
+            "z": 19,
+            "tabOrder": 19
+          },
+          "roles": {}
+        }
+      ]
+    }
+  ],
+  "metricExpressions": {
+    "Total Orders": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(COUNTROWS(fact_order), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), COUNTROWS(fact_order))",
+    "Delivered Orders": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(SUM(fact_order[delivered]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), SUM(fact_order[delivered]))",
+    "Cancelled Orders": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(SUM(fact_order[cancelled]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), SUM(fact_order[cancelled]))",
+    "Cancellation Rate": "DIVIDE([Cancelled Orders], [Total Orders])",
+    "Eligible Deliveries": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(SUM(fact_order[eligible_delivery]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), SUM(fact_order[eligible_delivery]))",
+    "Late Deliveries": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(SUM(fact_order[late]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), SUM(fact_order[late]))",
+    "Late Delivery Rate": "DIVIDE([Late Deliveries], [Eligible Deliveries])",
+    "On Time Delivery Rate": "IF([Eligible Deliveries] > 0, 1 - [Late Delivery Rate], BLANK())",
+    "Average Delivery Days": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[delivery_days]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[delivery_days]))",
+    "Average Processing Days": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[processing_days]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[processing_days]))",
+    "Average Shipping Days": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[shipping_days]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[shipping_days]))",
+    "Average Delay Days": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(CALCULATE(AVERAGE(fact_order[delay_days]), fact_order[late] = 1), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), CALCULATE(AVERAGE(fact_order[delay_days]), fact_order[late] = 1))",
+    "Average Review Score": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[review_score]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[review_score]))",
+    "Reviewed Orders": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(COUNT(fact_order[review_score]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), COUNT(fact_order[review_score]))",
+    "One Star Rate": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(DIVIDE(CALCULATE([Reviewed Orders], fact_order[review_score] = 1), [Reviewed Orders]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), DIVIDE(CALCULATE([Reviewed Orders], fact_order[review_score] = 1), [Reviewed Orders]))",
+    "Five Star Rate": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(DIVIDE(CALCULATE([Reviewed Orders], fact_order[review_score] = 5), [Reviewed Orders]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), DIVIDE(CALCULATE([Reviewed Orders], fact_order[review_score] = 5), [Reviewed Orders]))",
+    "Average Freight": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[freight]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[freight]))",
+    "Item AOV": "IF(ISCROSSFILTERED(dim_seller[seller_id]) || ISCROSSFILTERED(dim_category[category]), CALCULATE(AVERAGE(fact_order[gmv]), KEEPFILTERS(TREATAS(VALUES(bridge_order_seller_category[order_id]), fact_order[order_id]))), AVERAGE(fact_order[gmv]))",
+    "On Time Review Score": "CALCULATE([Average Review Score], fact_order[eligible_delivery] = 1, fact_order[late] = 0)",
+    "Late Review Score": "CALCULATE([Average Review Score], fact_order[late] = 1)",
+    "Review Score Gap": "[On Time Review Score] - [Late Review Score]",
+    "Seller Baseline Late Rate": "CALCULATE([Late Delivery Rate], REMOVEFILTERS(dim_seller))",
+    "Seller Excess Late pp": "100 * ([Late Delivery Rate] - [Seller Baseline Late Rate])",
+    "Seller Priority Flag": "IF([Eligible Deliveries] >= 50 && [Late Delivery Rate] > [Seller Baseline Late Rate], 1, BLANK())",
+    "Eligible Delivery Coverage": "DIVIDE([Eligible Deliveries], [Delivered Orders])",
+    "Comparable Monthly Late Rate": "IF([Eligible Deliveries] >= 100, [Late Delivery Rate], BLANK())",
+    "Common Duration Orders": "CALCULATE([Total Orders], FILTER(fact_order, NOT ISBLANK(fact_order[processing_days]) && NOT ISBLANK(fact_order[shipping_days])))",
+    "Common Processing Days": "CALCULATE([Average Processing Days], FILTER(fact_order, NOT ISBLANK(fact_order[processing_days]) && NOT ISBLANK(fact_order[shipping_days])))",
+    "Common Shipping Days": "CALCULATE([Average Shipping Days], FILTER(fact_order, NOT ISBLANK(fact_order[processing_days]) && NOT ISBLANK(fact_order[shipping_days])))",
+    "Context Insight": "IF([Eligible Deliveries] = 0, \"No eligible deliveries in the current selection\", FORMAT([Late Deliveries], \"#,0\") & \" late deliveries; late-order reviews average \" & FORMAT([Late Review Score], \"0.00\") & \" vs \" & FORMAT([On Time Review Score], \"0.00\") & \" on time. Investigate routes and handoff stages; association is not causation.\")",
+    "Period Coverage": "FORMAT(MIN(fact_order[purchase_date]), \"dd MMM yyyy\") & \" – \" & FORMAT(MAX(fact_order[purchase_date]), \"dd MMM yyyy\")"
+  }
+}

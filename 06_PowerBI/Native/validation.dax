@@ -1,0 +1,7 @@
+EVALUATE
+ROW(
+    "Total Orders", [Total Orders],
+    "Late Delivery Rate", [Late Delivery Rate],
+    "Average Review Score", [Average Review Score],
+    "Cancellation Rate", [Cancellation Rate]
+)
