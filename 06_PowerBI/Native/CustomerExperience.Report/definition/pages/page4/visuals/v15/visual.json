@@ -33,7 +33,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "13D"
+                  "Value": "14D"
                 }
               }
             },
@@ -42,7 +42,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#172A43'"
+                      "Value": "'#17324D'"
                     }
                   }
                 }
@@ -118,11 +118,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "Historical orders • Late rate uses eligible delivered orders • Review differences are associations • Multi-seller counts overlap",
+                    "value": "Historical orders \u2022 Late rate uses eligible delivered orders \u2022 Review differences are associations \u2022 Multi-seller counts overlap",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "13pt",
-                      "color": "#172A43",
+                      "color": "#53657A",
                       "fontWeight": "normal"
                     }
                   }
